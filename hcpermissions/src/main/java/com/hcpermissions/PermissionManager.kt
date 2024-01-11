@@ -29,6 +29,7 @@ class PermissionManager {
             permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
         }
         requestPermissions(activity, permissions, callback)
+
     }
 
     private fun requestPermissions(activity: Activity, permissions: Array<String>, callback: (granted: Boolean) -> Unit) {
