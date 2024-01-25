@@ -40,6 +40,7 @@ implementation 'com.github.AlpeshSolanki2001:HcPermissions:latest-version'
 
 ```
  private lateinit var resultLauncher: ActivityResultLauncher<Intent>
+ val permissionManager = PermissionManager()
  
   resultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

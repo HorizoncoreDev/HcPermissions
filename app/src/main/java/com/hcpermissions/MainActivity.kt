@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val imageSelect = findViewById<TextView>(R.id.txt)
         val imageView = findViewById<ImageView>(R.id.imageview)
+
         val permissionManager = PermissionManager()
 
         resultLauncher =
