@@ -3,6 +3,7 @@ import io.grpc.internal.SharedResourceHolder.release
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
@@ -34,10 +35,19 @@ android {
     }
 
 
-
-
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("bar") {
+                groupId = "com.hcpermissions"
+                artifactId = "hcUtils"
+                version = "1.0.7"
+            }
+        }
+    }
+}
 
 
 

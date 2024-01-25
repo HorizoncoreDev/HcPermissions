@@ -95,4 +95,3 @@ implementation 'com.github.AlpeshSolanki2001:HcPermissions:latest-version'
  
 ```
 
-- Replace 'com.yourpackage:yourlibrary:1.0.0' with the actual dependency, and customize the example according to your library's API and usage.
