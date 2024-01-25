@@ -1,29 +1,41 @@
-package com.hcpermissions
+# HcPermissions
 
-import android.app.Activity
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import com.bumptech.glide.Glide
+HcPermissions is an Android library that simplifies permission handling in Android applications. It
+provides version-specific methods to request and check permissions, making it easier to manage the
+changes in the Android permission system across different API levels.
 
-class MainActivity : AppCompatActivity() {
+## Key Features
 
-    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val imageSelect = findViewById<TextView>(R.id.txt)
-        val imageView = findViewById<ImageView>(R.id.imageview)
-        val permissionManager = PermissionManager()
+- Version-wise permission handling.
+- Easy-to-use API for requesting and checking permissions.
 
-        resultLauncher =
+## Getting Started
+
+### Installation
+
+Add the following dependency to your app's `build.gradle` file:
+
+```gradle
+implementation 'com.yourpackage:yourlibrary:1.0.0'
+```
+
+### Usage
+
+- Example: Selecting an Image from Gallery
+    - I have implemented a example for select image from gallery
+
+1. Add Required Permissions in Manifest:
+    - Add the necessary permissions in your AndroidManifest.xml file:
+- EX:
+    - <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    - <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
+2. Implement in Your Activity:
+
+```
+ private lateinit var resultLauncher: ActivityResultLauncher<Intent>
+ 
+  resultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == Activity.RESULT_OK) {
                     val data: Intent? = result.data
@@ -35,9 +47,8 @@ class MainActivity : AppCompatActivity() {
         imageSelect.setOnClickListener {
             selectImageFromGallery(permissionManager, resultLauncher)
         }
-    }
-
-    private fun selectImageFromGallery(
+ 
+ private fun selectImageFromGallery(
         permissionManager: PermissionManager, resultLauncher: ActivityResultLauncher<Intent>
     ) {
         permissionManager.requestStoragePermissions(this) { granted ->
@@ -51,8 +62,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    override fun onRequestPermissionsResult(
+    
+     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -75,4 +86,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         resultLauncher.launch(intent)
     }
-}
+ 
+```
+
+- Replace 'com.yourpackage:yourlibrary:1.0.0' with the actual dependency, and customize the example according to your library's API and usage.
