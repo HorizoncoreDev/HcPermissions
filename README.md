@@ -16,7 +16,16 @@ changes in the Android permission system across different API levels.
 Add the following dependency to your app's `build.gradle` file:
 
 ```gradle
-implementation 'com.yourpackage:yourlibrary:1.0.0'
+
+dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+implementation 'com.github.AlpeshSolanki2001:HcPermissions:latest-version'
 ```
 
 ### Usage
@@ -25,10 +34,7 @@ implementation 'com.yourpackage:yourlibrary:1.0.0'
     - I have implemented a example for select image from gallery
 
 1. Add Required Permissions in Manifest:
-    - Add the necessary permissions in your AndroidManifest.xml file:
-- EX:
-    - <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
-    - <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    - Add the necessary permissions in your AndroidManifest.xml file
 
 2. Implement in Your Activity:
 
