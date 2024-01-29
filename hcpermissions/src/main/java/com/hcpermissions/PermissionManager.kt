@@ -97,7 +97,6 @@ class PermissionManager {
 
     fun onRequestPermissionsResult(
         requestCode: Int,
-        permissions: Array<out String>,
         grantResults: IntArray,
         callback: (granted: Boolean) -> Unit
     ) {

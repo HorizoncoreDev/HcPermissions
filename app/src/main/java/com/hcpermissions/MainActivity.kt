@@ -34,12 +34,12 @@ class MainActivity : AppCompatActivity() {
             }
 
         imageSelect.setOnClickListener {
-            selectImageFromGallery(permissionManager, resultLauncher)
+            selectImageFromGallery(permissionManager)
         }
     }
 
     private fun selectImageFromGallery(
-        permissionManager: PermissionManager, resultLauncher: ActivityResultLauncher<Intent>
+        permissionManager: PermissionManager
     ) {
         permissionManager.requestStoragePermissions(this) { granted ->
             if (granted) {
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         PermissionManager().onRequestPermissionsResult(
-            requestCode, permissions, grantResults
+            requestCode, grantResults
         ) { granted ->
             // Handle permission results here
             if (granted) {
