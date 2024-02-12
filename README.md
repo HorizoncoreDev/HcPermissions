@@ -31,7 +31,7 @@ implementation 'com.github.AlpeshSolanki2001:HcPermissions:latest-version'
 ### Usage
 
 - Example: Selecting an Image from Gallery
-    - I have implemented a example for select image from gallery
+    - I have implemented an example for select image from gallery
 
 1. Add Required Permissions in Manifest:
     - Add the necessary permissions in your AndroidManifest.xml file
